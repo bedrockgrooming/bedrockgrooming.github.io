@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pet Rock Care Website</title>
+    <style>
+        
+        /* header stuff*/
+        h1 {
+            text-align: center;
+            color:crimson;
+        }
+        
+        a {
+          color:antiquewhite;
+        }
+        
+        a:hover {
+          color:crimson;
+          background-color: antiquewhite;
+        }
+        
+        body {
+            background-color:antiquewhite;
+            margin: 0; 
+            padding: 0; 
+        }
+        
+        .wrapper { /*used to format the page by adding margins and centering*/
+            padding: 5px;
+            max-width: 960px;
+            /*width: 95%;*/
+            margin: 20px auto;
+        }
+        
+        /* body stuff*/
+        .columns {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: center;
+            padding-top: 10px;
+        }
+        
+        .column {
+            border: 1px solid #666;
+            margin: 18px;
+            padding-top: 10px;
+            padding: 40px;
+            background: #d2b48c;
+        }
+        
+        ul {
+            list-style: none;
+            margin-left: -10px;
+            margin-top: -50px;
+            padding: 50px;
+            height:100px;
+        }
+
+        ul li:before {
+            content: '✓';
+            padding: 8px;
+        }
+        
+        li {
+            margin: 10px
+            
+        }
+        
+    
+    </style>
+  </head>
+  <body>
+    <header style="font-size:400%; text-align:center; font-family: Arial, Helvetica, sans-serif;background-color: beige;">
+      <a style="text-decoration:none;color:crimson;" href="./index.html">Pet Rock Mfs</a></header>
+    
+    <!--Nav bar-->
+    <nav style="text-align:center;padding: 5mm;font-size: 5mm;background-color: crimson;color:antiquewhite;">
+      <a style="text-decoration:none;padding: 5mm;" href="./index.html">Home</a>
+      <a style="text-decoration:none;padding: 5mm;" href="./about.html">About</a>
+      <a style="text-decoration:none;padding: 5mm;" href="./pricing.html">Pricing</a>
+      <a style="text-decoration:none;padding: 5mm;" href="./contact.html">Contact</a>
+      <a style="text-decoration:none;padding: 5mm;" href="./careers.html">Careers</a>
+      <a style="text-decoration:none;padding: 5mm;" href="./blog.html">Blog</a>
+      <a style="text-decoration:none;padding: 5mm;" href="./payment.html">Payment</a>
+    </nav>
+    
+    <p style="text-align:center;">Here are our pricing plans:</p>
+      
+    <section class="columns">
+      <div class="column">
+        <h2 style="text-align: center">1 Day</h2>
+        <h2 style="text-align: center; color: crimson; font-size: 40px;">$10</h2>
+        <ul>
+          <li>Boarding</li>
+          <li>Grooming</li>
+          <li>Meals</li>
+          <li>Exercise</li>
+        </ul>
+        <a style="text-decoration:none;padding: 5mm;margin-left:46px" href="./payment.html">Select Plan</a>
+      </div>
+      
+      <div class="column">
+        <h2 style="text-align: center">1 Week</h2>
+        <h2 style="text-align: center; color: crimson; font-size: 40px;">$60</h2>
+        <ul>
+          <li>Boarding</li>
+          <li>Grooming</li>
+          <li>Meals</li>
+          <li>Exercise</li>
+        </ul>
+        <a style="text-decoration:none;padding: 5mm;margin-left:46px" href="./payment.html">Select Plan</a>
+        
+      </div>
+      
+      <div class="column">
+        <h2 style="text-align: center">1 Month</h2>
+        <h2 style="text-align: center; color: crimson; font-size: 40px;">$150</h2>
+        <ul>
+          <li>Boarding</li>
+          <li>Grooming</li>
+          <li>Meals</li>
+          <li>Exercise</li>
+        </ul>
+        <a style="text-decoration:none;padding: 5mm;margin-left:46px" href="./payment.html">Select Plan</a>
+      </div>
+      
+    </section>
+      
+  </body>
+</html>
