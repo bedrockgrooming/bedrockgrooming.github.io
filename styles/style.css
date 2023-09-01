@@ -60,9 +60,13 @@ a:hover[href="./index.html"] {
   color: #e8eaeb
 }
 .container {
-    max-width: 800px;
+    
     margin: 20px auto;
     padding-left: 500px;
     padding-right: 500px;
     border: 1px solid #e8eaeb;
+}
+ul{
+    padding-left: 550px;
+    padding-right: 500px;
 }
