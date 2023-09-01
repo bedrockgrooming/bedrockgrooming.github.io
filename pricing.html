@@ -5,8 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pet Rock Care Website</title>
+    
     <style>
-        
+        header {
+            padding:10mm;
+            font-size:400%; 
+            text-align:center; 
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #567836;
+        }
+        nav {
+            text-align: center; 
+            padding: 8mm;
+            font-size: 5mm;
+            background-color: #567836;
+            color:#e8eaeb;
+        }
         /* header stuff*/
         h1 {
             text-align: center;
@@ -71,33 +85,36 @@
             margin: 10px
             
         }
-        
+        .tab1 {
+            display:inline-block;
+            margin-left: 28px;
+        }
     
     </style>
   </head>
   <body>
 
     
-    <header style="font-size:400%; text-align:center; font-family: Arial, Helvetica, sans-serif;background-color: #567836;">
+    <header>
       <a style="text-decoration:none;color:#e8eaeb;" href="./index.html">Bedrock Grooming</a></header>
     <nav style="text-align:center;padding: 5mm;font-size: 5mm;background-color: #4f5054;color:#e8eaeb;">
-      <a style="text-decoration:none;padding: 5mm;" href="https://www.bedrockgrooming.com/">Home</a>
-      <a style="text-decoration:none;padding: 5mm;" href="./about.html">About</a>
-      <a style="text-decoration:none;padding: 5mm;" href="./pricing.html">Pricing</a>
-      <a style="text-decoration:none;padding: 5mm;" href="./contact.html">Contact</a>
-      <a style="text-decoration:none;padding: 5mm;" href="./careers.html">Careers</a>
-      <a style="text-decoration:none;padding: 5mm;" href="./blog.html">Blog</a>
-      <a style="text-decoration:none;padding: 5mm;" href="./payment.html">Payment</a>
+      <a href="https://www.bedrockgrooming.com/">Home</a>
+      <a href="./about.html">About</a>
+      <a href="./pricing.html">Pricing</a>
+      <a href="./contact.html">Contact</a>
+      <a href="./careers.html">Careers</a>
+      <a href="./blog.html">Blog</a>
+      <a href="./payment.html">Payment</a>
     </nav>
     
     <p style="text-align:center;">Here are our pricing plans:</p>
       
     <section class="columns">
       <div class="column">
-        <h2 style="text-align: center">1 Day</h2>
+        <h2 style="text-align: center">Bedrock Basic</h2>
         <h2 style="text-align: center; color: #567836; font-size: 40px;">$10</h2>
         <ul>
-          <li>Boarding</li>
+            <li>High-quality<br><span class="tab1">rock wash</span></li>
           <li>Grooming</li>
           <li>Meals</li>
           <li>Exercise</li>
@@ -106,7 +123,7 @@
       </div>
       
       <div class="column">
-        <h2 style="text-align: center">1 Week</h2>
+        <h2 style="text-align: center">Bedrock Deluxe</h2>
         <h2 style="text-align: center; color: #567836; font-size: 40px;">$60</h2>
         <ul>
           <li>Boarding</li>
@@ -119,7 +136,7 @@
       </div>
       
       <div class="column">
-        <h2 style="text-align: center">1 Month</h2>
+        <h2 style="text-align: center">Bedrock Ultimate!</h2>
         <h2 style="text-align: center; color: #567836; font-size: 40px;">$150</h2>
         <ul>
           <li>Boarding</li>
