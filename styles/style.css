@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk&display=swap');
 body {
     font-family: 'Hanken Grotesk', sans-serif; 
     background-color:#e8eaeb;
@@ -7,13 +8,14 @@ body {
 header {
     padding:10mm;
     font-size:400%; 
-    text-align:center;
+    text-align:center; 
     background-color: #567836;
 }
 nav {
     text-align: center; 
     padding: 8mm;
     font-size: 5mm;
+    font-family: 'Hanken Grotesk', sans-serif;
     background-color: #567836;
     color:#e8eaeb;
 }
@@ -58,4 +60,15 @@ a:hover{
 a:hover[href="./index.html"] {
   background-color: #567836;
   color: #e8eaeb
+}
+.container {
+    
+    margin: 20px auto;
+    padding-left: 500px;
+    padding-right: 500px;
+    border: 1px solid #e8eaeb;
+}
+ul{
+    padding-left: 550px;
+    padding-right: 500px;
 }
