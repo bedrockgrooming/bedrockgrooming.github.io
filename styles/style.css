@@ -1,23 +1,40 @@
 @import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk&display=swap');
 body {
-    font-family: 'Hanken Grotesk', sans-serif; 
+    font-family: 'Hanken Grotesk', sans-serif;
     background-color:#e8eaeb;
     margin: 0; 
     padding: 0; 
 }
 header {
-    padding:10mm;
-    font-size:400%; 
+    padding:18mm;
+    border: 6px solid #a4cb62;
+    font-size:450%;
+    font-weight: bold;
     text-align:center; 
     background-color: #567836;
 }
 nav {
-    text-align: center; 
-    padding: 8mm;
+    text-align: center;
+    border: 4px solid #606064;
+    padding: 15mm;
     font-size: 5mm;
     font-family: 'Hanken Grotesk', sans-serif;
-    background-color: #567836;
+    background-color: #4F5054;
     color:#e8eaeb;
+}
+.parallax-wet-rocks {
+  /* The image used */
+  background-image: url('../Images/wet-rocks-background.jpg');
+
+  /* Set a specific height */
+  min-height: 800px;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-bottom: -750px;
 }
 h1 {
     text-align: center;
@@ -49,20 +66,30 @@ a {
     text-decoration:none;
     padding: 5mm;
 }
-a[href="./index.html"] {
-    text-decoration:none;
-    color:#e8eaeb;
-}
 a:hover{
   color:#567836;
   background-color: #e8eaeb;
 }
-a:hover[href="./index.html"] {
+#home {
+    text-decoration:none;
+    color:#e8eaeb;
+}
+#home:hover {
   background-color: #567836;
   color: #e8eaeb
 }
+#pay-plan {
+    text-decoration:none;
+    padding: 5mm;
+    margin-left:68px; 
+    color:#e8eaeb;
+    background-color: #567836;
+}
+#pay-plan:hover {
+  color: #567836;
+  background-color: #e8eaeb;
+}
 .container {
-    
     margin: 20px auto;
     padding-left: 500px;
     padding-right: 500px;
