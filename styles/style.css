@@ -49,6 +49,18 @@ h2 {
     padding-right: 500px;
     color:#373840;
 }
+h3 {
+    text-align: center;
+    padding-left: 500px;
+    padding-right: 500px;
+    color:#373840;
+}
+h4 {
+    text-align: center;
+    padding-left: 500px;
+    padding-right: 500px;
+    color:#373840;
+}
 p {
     text-align: left;
     padding-left: 500px;
@@ -95,7 +107,15 @@ a:hover{
     padding-right: 500px;
     border: 1px solid #e8eaeb;
 }
-ul{
-    padding-left: 550px;
-    padding-right: 500px;
+footer {
+    background-color: #567836;
+    color: #e8eaeb;
+    padding: 8mm;
+    font-size: 5mm;
+    text-align: center;
+    margin-top: 50px;
 }
+footer p{
+    color:#e8eaeb;
+    text-align: center;
+  }
