@@ -88,6 +88,9 @@
               method: 'POST',
               headers: {
                   'Content-Type': 'application/json',
+                  'Access-Control-Allow-Headers': '*', 
+                  'Access-Control-Allow-Methods': 'POST',
+                  'Access-Control-Allow-Origin': '*',
               },
               body: JSON.stringify({ parameter }),
           });
