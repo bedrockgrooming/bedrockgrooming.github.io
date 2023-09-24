@@ -81,41 +81,15 @@
       var cookieObject = {
           id: userid
         };
-        
-      async function callCloudflareWorker(parameter) {
-          const workerUrl = `https://unique-id-worker.marquat9.workers.dev/`; // Replace  with your actual worker URL
-          const response = await fetch(workerUrl, {
-              method: 'POST',
-              headers: {
-                  'Content-Type': 'application/json',
-                  'Access-Control-Allow-Headers': '*', 
-                  'Access-Control-Allow-Methods': 'POST',
-                  'Access-Control-Allow-Origin': '*',
-              },
-              body: JSON.stringify({ parameter }),
-          });
-
-          if (!response.ok) {
-              throw new Error(`Error calling Cloudflare Worker: ${response.statusText}`);
-          }
-
-          const data = await response.json();
-          return data;
-      }
-
-      callCloudflareWorker(cookieObject);
       
-      /*
-        // Post JSON message with cookie to worker
+      // Post JSON message with cookie to worker
       fetch('https://unique-id-worker.marquat9.workers.dev/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*',
         },
         body: JSON.stringify(cookieObject)
       });
-      */
 
       console.log(JSON.stringify(cookieObject));
     </script>
