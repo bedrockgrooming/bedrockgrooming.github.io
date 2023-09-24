@@ -68,11 +68,12 @@
         userid = generateCookie("uniqueUser");
       }
 
-      // Turn uniqueUser cookie into JSON object
+      // Turn uniqueUser cookie into javascript object
       var cookieObject = {
-        id: userid
-      };
-
+          id: userid
+        };
+        
+      // Post JSON message with cookie to worker
       fetch('https://web-analytics.marquat9.workers.dev/', {
         method: 'POST',
         headers: {
@@ -81,8 +82,7 @@
         body: JSON.stringify(cookieObject)
       });
 
-      //JSON.stringify(cookieObject.id);
-      console.log(JSON.stringify(cookieObject.id));
+      console.log(JSON.stringify(cookieObject));
     </script>
     
   </head>
