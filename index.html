@@ -7,7 +7,79 @@
     <title>Bedrock Grooming - Home</title>
     <link rel="stylesheet" type="text/css" 
           href="./styles/style.css">
+    
+    <script>
+      // Creates and returns a unique user ID
+      function create_UUID() {
+        var dt = new Date().getTime();
+        var uuid = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
+          var r = (dt + Math.random() * 16) % 16 | 0;
+          dt = Math.floor(dt / 16);
+          return (c == "x" ? r : (r & 0x3) | 0x8).toString(16);
+        });
+        return uuid;
+      }
+      
+      // Generates a cookie with name passed as parameter that contains
+      // a unique user ID. 
+      function generateCookie(cookie_name) {
+        let cookie = getCookie(cookie_name);
+        // if cookie does not already exist, create a new one
+        if (cookie == "") {
+
+          //create a unique ID for user
+          let cookie_id = create_UUID();
+          let cookie_expiration = 365;
+          const d = new Date();
+          d.setTime(d.getTime() + cookie_expiration * 24 * 60 * 60 * 1000);
+          let expires = ";expires=" + d.toUTCString();
+          
+          document.cookie = cookie_name+"="+cookie_id+";"+cookie_expiration+"; path=/"+expires;
+          //document.cookie = cookie_name+"="+cookie_id+";"+"; path=/";
+        }
+      }
+      
+      // Searches for a cookie with name passed as parameter.
+      function getCookie(cookie_name) {
+        let name = cookie_name + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(";");
+
+        // Check list of cookies for cookie_name
+        for (let i = 0; i < ca.length; i++) {
+          let c = ca[i];
+          while (c.charAt(0) == " ") {
+            c = c.substring(1);
+          }
+          // if cookie is found, return its value
+          if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+          }
+        }
+        // else return nothing
+        return "";
+      }
+
+      let userid = getCookie("uniqueUser");
+      
+      // If uniqeUser cookie does not exist, create a new one.
+      // If it does exist, move on
+      if(userid == "") {
+        userid = generateCookie("uniqueUser");
+      }
+
+      // Turn uniqueUser cookie into JSON object
+      var cookieObject = {
+        uniqueID: userid
+      };
+      
+      JSON.stringify(cookieObject);
+      console.log(cookieObject);
+    </script>
+    
   </head>
+
+
   <body>
     <header>
       <a id="home" href="./index.html">Bedrock Grooming</a>
