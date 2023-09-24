@@ -79,11 +79,19 @@
 
       // Turn uniqueUser cookie into JSON object
       var cookieObject = {
-        uniqueID: userid
+        id: userid
       };
-      
-      JSON.stringify(cookieObject);
-      console.log(cookieObject);
+
+      fetch('https://web-analytics.marquat9.workers.dev/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(cookieObject)
+      });
+
+      //JSON.stringify(cookieObject.id);
+      console.log(JSON.stringify(cookieObject.id));
     </script>
     
   </head>
