@@ -60,24 +60,6 @@
         return "";
       }
 
-      async function callCloudflareWorker(parameter) {
-          const workerUrl = 'https://unique-id-worker.marquat9.workers.dev/';
-          const response = await fetch(workerUrl, {
-              method: 'POST',
-              headers: {
-                  'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({ parameter }),
-          });
-
-          if (!response.ok) {
-              throw new Error(`Error calling Cloudflare Worker: ${response.statusText}`);
-          }
-
-          const data = await response.json();
-          return data;
-      }
-
       let userid = getCookie("uniqueUser");
       
       // If uniqeUser cookie does not exist, create a new one.
@@ -90,19 +72,31 @@
       var cookieObject = {
           id: userid
       };
-
+      
+      // Send a POST request to the worker
       console.log(callCloudflareWorker(cookieObject));
 
-      /*
-      // Post JSON message with cookie to worker
-      fetch('https://unique-id-worker.marquat9.workers.dev/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(cookieObject)
-      });
-      */
+      // This function returns a response from the worker in the form of a JSON message
+      async function callCloudflareWorker(parameter) {
+          // Send request to correct worker
+          const workerUrl = 'https://unique-visitor-2.marquat9.workers.dev/';
+          
+          const response = await fetch(workerUrl, {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ parameter }),
+          });
+          // If worker doesn't respond, throw an error
+          if (!response.ok) {
+              throw new Error(`Error calling Cloudflare Worker: ${response.statusText}`);
+          }
+          
+          // Wait for worker response and return the contents of said response
+          const data = await response.json();
+          return data;
+      }
 
       console.log(JSON.stringify(cookieObject));
     </script>
