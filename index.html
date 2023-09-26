@@ -69,6 +69,24 @@
         return "";
       }
 
+      async function callCloudflareWorker(parameter) {
+          const workerUrl = 'https://unique-id-worker.marquat9.workers.dev/';
+          const response = await fetch(workerUrl, {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ parameter }),
+          });
+
+          if (!response.ok) {
+              throw new Error(`Error calling Cloudflare Worker: ${response.statusText}`);
+          }
+
+          const data = await response.json();
+          return data;
+      }
+
       let userid = getCookie("uniqueUser");
       
       // If uniqeUser cookie does not exist, create a new one.
@@ -80,8 +98,11 @@
       // Turn uniqueUser cookie into javascript object
       var cookieObject = {
           id: userid
-        };
-      
+      };
+
+      callCloudflareWorker(cookieObject);
+
+      /*
       // Post JSON message with cookie to worker
       fetch('https://unique-id-worker.marquat9.workers.dev/', {
         method: 'POST',
@@ -90,6 +111,7 @@
         },
         body: JSON.stringify(cookieObject)
       });
+      */
 
       console.log(JSON.stringify(cookieObject));
     </script>
