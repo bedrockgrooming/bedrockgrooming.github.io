@@ -71,22 +71,28 @@
 
       let userid = getCookie("uniqueUser");
       
-      // If uniqeUser cookie does not exist, create a new one.
-      // If it does exist, move on
-      if(userid == "") {
-        userid = generateCookie("uniqueUser");
-        
-        // Send a POST request to the worker
-        console.log(callCloudflareWorker(cookieObject));
-      }
-
       // Turn uniqueUser cookie into javascript object
       var cookieObject = {
           id: userid
       };
 
+      // If uniqeUser cookie does not exist, create a new one and call worker.
+      if(userid == "") {
+        userid = generateCookie("uniqueUser");
+        
+        // Send a POST request to the worker
+        let returnValue = callWorker(cookieObject, false);
+        console.log(returnValue);
+      }
+      else {
+        // else cookie already exists, just get current count
+        let returnValue = callWorker(cookieObject, true);
+        console.log(returnValue);
+      }
+
       // This function returns a response from the worker in the form of a JSON message
-      async function callCloudflareWorker(parameter) {
+      async function callWorker(message, alreadyExists) {
+        if (alreadyExists == false ) {
           // Send request to correct worker
           const workerUrl = 'https://unique-visitor-2.marquat9.workers.dev/';
           
@@ -95,8 +101,9 @@
               headers: {
                   'Content-Type': 'application/json',
               },
-              body: JSON.stringify({ parameter }),
+              body: JSON.stringify({ message }),
           });
+
           // If worker doesn't respond, throw an error
           if (!response.ok) {
               throw new Error(`Error calling Cloudflare Worker: ${response.statusText}`);
@@ -105,9 +112,30 @@
           // Wait for worker response and return the contents of said response
           const data = await response.json();
           return data;
+        }
+        else if (alreadyExists == true) {
+          // Send request to correct worker
+          const workerUrl = 'https://unique-visitor-2.marquat9.workers.dev/';
+          
+          const response = await fetch(workerUrl, {
+              method: 'GET',
+              headers: {
+                  'Content-Type': 'application/json',
+              },
+          });
+
+          // If worker doesn't respond, throw an error
+          if (!response.ok) {
+              throw new Error(`Error calling Cloudflare Worker: ${response.statusText}`);
+          }
+          
+          // Wait for worker response and return the contents of said response
+          const data = await response.json();
+          return data;
+        }  
       }
 
-      
+      //parseInt();
 
       console.log(JSON.stringify(cookieObject));
     </script>
