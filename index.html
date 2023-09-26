@@ -66,15 +66,15 @@
       // If it does exist, move on
       if(userid == "") {
         userid = generateCookie("uniqueUser");
+        
+        // Send a POST request to the worker
+        console.log(callCloudflareWorker(cookieObject));
       }
 
       // Turn uniqueUser cookie into javascript object
       var cookieObject = {
           id: userid
       };
-      
-      // Send a POST request to the worker
-      console.log(callCloudflareWorker(cookieObject));
 
       // This function returns a response from the worker in the form of a JSON message
       async function callCloudflareWorker(parameter) {
@@ -97,6 +97,8 @@
           const data = await response.json();
           return data;
       }
+
+      
 
       console.log(JSON.stringify(cookieObject));
     </script>
