@@ -67,20 +67,6 @@
           id: userid
       };
 
-      // If uniqeUser cookie does not exist, create a new one and call worker.
-      if(userid == "") {
-        userid = generateCookie("uniqueUser");
-        
-        // Send a POST request to the worker
-        let returnValue = callWorker(cookieObject, false);
-        console.log(returnValue);
-      }
-      else {
-        // else cookie already exists, just get current count
-        let returnValue = callWorker(cookieObject, true);
-        console.log(returnValue);
-      }
-
       // This function returns a response from the worker in the form of a JSON message
       async function callWorker(message, alreadyExists) {
         if (alreadyExists == false ) {
@@ -126,9 +112,35 @@
         }  
       }
 
-      //parseInt();
+      // If uniqeUser cookie does not exist, create a new one and call worker.
+      if(userid == "") {
+        userid = generateCookie("uniqueUser");
+        
+        // Send a POST request to the worker
+        let returnValue = callWorker(cookieObject, false).then((returnValue) => {
+          const userCount = document.createElement("p");
+          const node = document.createTextNode(returnValue);
+          userCount.appendChild(node);
+          const element = document.getElementById("divUserCount");
+          element.appendChild(userCount);
+          console.log(returnValue)});
+        console.log(returnValue);
+      }
+      else {
+        // else cookie already exists, just GET current count
+        let returnValue = callWorker(cookieObject, true).then((returnValue) => {
+          const userCount = document.createElement("p");
+          const node = document.createTextNode(returnValue);
+          userCount.appendChild(node);
+          const element = document.getElementById("divUserCount");
+          element.appendChild(userCount);
+          console.log(returnValue)});
+        console.log(returnValue);
+      }
+      
+      
 
-      console.log(JSON.stringify(cookieObject));
+      //console.log(JSON.stringify(cookieObject));
     </script>
     
   </head>
@@ -138,6 +150,11 @@
     <header>
       <a id="home" href="./index.html">Bedrock Grooming</a>
     </header>
+
+    <div id="divUserCount">
+      <p id="p1">This div tag contains html elements</p>
+    </div>
+
     <nav style="text-align:center;padding: 5mm;font-size: 5mm;background-color: #4f5054;color:#e8eaeb;">
       <a href="https://www.bedrockgrooming.com/">Home</a>
       <a href="./about.html">About</a>
