@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+  <script src="js/main.js"></script>
   <head>
     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-26GDKK7SNN"></script>
@@ -17,6 +18,8 @@
     
     <link rel="stylesheet" type="text/css" 
           href="./styles/style.css">
+    <link rel="stylesheet" 
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
       
     <style>
         h2 {
@@ -51,7 +54,7 @@
             background: #a4cb62;
         }
         
-        ul {
+        .column ul {
             list-style: none;
             margin-left: -10px;
             margin-top: -50px;
@@ -80,16 +83,22 @@
 
     
     <header>
-      <a id="home" style="text-decoration:none;color:#e8eaeb;" href="./index.html">Bedrock Grooming</a></header>
-    <nav style="text-align:center;padding: 5mm;font-size: 5mm;background-color: #4f5054;color:#e8eaeb;">
-      <a href="https://www.bedrockgrooming.com/">Home</a>
-      <a href="./about.html">About</a>
-      <a href="./pricing.html">Pricing</a>
-      <a href="./contact.html">Contact</a>
-      <a href="./careers.html">Careers</a>
-      <a href="./blog.html">Blog</a>
-      <a href="./payment.html">Payment</a>
-    </nav>
+      <a id="home" style="text-decoration:none;color:#e8eaeb;" href="./index.html">Bedrock Grooming</a>
+    </header>
+    <div class="topnav" id="myTopnav">
+      <ul>
+        <a href="https://www.bedrockgrooming.com/">Home</a>
+        <a href="./about.html">About</a>
+        <a href="./pricing.html">Pricing</a>
+        <a href="./contact.html">Contact</a>
+        <a href="./careers.html">Careers</a>
+        <a href="./blog.html">Blog</a>
+        <a href="./payment.html">Payment</a>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+          <i class="fa fa-bars"></i>
+        </a>
+      </ul>
+    </div>
     
     <!-- parallax scrolling background -->
     <div class="parallax-wet-rocks"></div>
