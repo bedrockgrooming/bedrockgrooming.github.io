@@ -1,170 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-26GDKK7SNN"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<script src="js/main.js"></script>
+<head>
+      <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-26GDKK7SNN"></script>
 
-  gtag('config', 'G-26GDKK7SNN');
-</script>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bedrock Grooming - Pet Rock Care Services</title>
-    <link rel="stylesheet" type="text/css" 
-          href="./styles/style.css">
-    
-    <script>
-      // Creates and returns a unique user ID
-      function create_UUID() {
-        var dt = new Date().getTime();
-        var uuid = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
-          var r = (dt + Math.random() * 16) % 16 | 0;
-          dt = Math.floor(dt / 16);
-          return (c == "x" ? r : (r & 0x3) | 0x8).toString(16);
-        });
-        return uuid;
-      }
-      
-      // Generates a cookie with name passed as parameter that contains
-      // a unique user ID. 
-      function generateCookie(cookie_name) {
-        let cookie = getCookie(cookie_name);
-        // if cookie does not already exist, create a new one
-        if (cookie == "") {
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-          //create a unique ID for user
-          let cookie_id = create_UUID();
-          let cookie_expiration = 365;
-          const d = new Date();
-          d.setTime(d.getTime() + cookie_expiration * 24 * 60 * 60 * 1000);
-          let expires = ";expires=" + d.toUTCString();
-          
-          document.cookie = cookie_name+"="+cookie_id+";"+cookie_expiration+"; path=/"+expires;
-          //document.cookie = cookie_name+"="+cookie_id+";"+"; path=/";
-        }
-      }
-      
-      // Searches for a cookie with name passed as parameter.
-      function getCookie(cookie_name) {
-        let name = cookie_name + "=";
-        let decodedCookie = decodeURIComponent(document.cookie);
-        let ca = decodedCookie.split(";");
+    gtag('config', 'G-26GDKK7SNN');
+  </script>
 
-        // Check list of cookies for cookie_name
-        for (let i = 0; i < ca.length; i++) {
-          let c = ca[i];
-          while (c.charAt(0) == " ") {
-            c = c.substring(1);
-          }
-          // if cookie is found, return its value
-          if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
-          }
-        }
-        // else return nothing
-        return "";
-      }
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-      let userid = getCookie("uniqueUser");
-      
-      // Turn uniqueUser cookie into javascript object
-      var cookieObject = {
-          id: userid
-      };
+  <title>Bedrock Grooming - Pet Rock Care Services</title>
+  
+  <link rel="stylesheet" type="text/css" 
+    href="./styles/style.css">
+  <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
 
-      // This function returns a response from the worker in the form of a JSON message
-      async function callWorker(message, alreadyExists) {
-        if (alreadyExists == false ) {
-          // Send request to correct worker
-          const workerUrl = 'https://unique-visitor-2.marquat9.workers.dev/';
-          
-          const response = await fetch(workerUrl, {
-              method: 'POST',
-              headers: {
-                  'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({ message }),
-          });
+<body>
+  <header>
+    <a id="home" href="./index.html">Bedrock Grooming</a>
+  </header>
 
-          // If worker doesn't respond, throw an error
-          if (!response.ok) {
-              throw new Error(`Error calling Cloudflare Worker: ${response.statusText}`);
-          }
-          
-          // Wait for worker response and return the contents of said response
-          const data = await response.json();
-          return data;
-        }
-        else if (alreadyExists == true) {
-          // Send request to correct worker
-          const workerUrl = 'https://unique-visitor-2.marquat9.workers.dev/';
-          
-          const response = await fetch(workerUrl, {
-              method: 'GET',
-              headers: {
-                  'Content-Type': 'application/json',
-              },
-          });
+  <div id="divUserCount">
+    <p id="p1">The current number of unique users to this website is: </p>
+  </div>
 
-          // If worker doesn't respond, throw an error
-          if (!response.ok) {
-              throw new Error(`Error calling Cloudflare Worker: ${response.statusText}`);
-          }
-          
-          // Wait for worker response and return the contents of said response
-          const data = await response.json();
-          return data;
-        }  
-      }
-
-      // If uniqeUser cookie does not exist, create a new one and call worker.
-      if(userid == "") {
-        userid = generateCookie("uniqueUser");
-        
-        // Send a POST request to the worker
-        let returnValue = callWorker(cookieObject, false).then((returnValue) => {
-          const userCount = document.createElement("p");
-          const node = document.createTextNode(returnValue);
-          userCount.appendChild(node);
-          const element = document.getElementById("divUserCount");
-          element.appendChild(userCount);
-          console.log(returnValue)});
-        console.log(returnValue);
-      }
-      else {
-        // else cookie already exists, just GET current count
-        let returnValue = callWorker(cookieObject, true).then((returnValue) => {
-          const userCount = document.createElement("p");
-          const node = document.createTextNode(returnValue);
-          userCount.appendChild(node);
-          const element = document.getElementById("divUserCount");
-          element.appendChild(userCount);
-          console.log(returnValue)});
-        console.log(returnValue);
-      }
-      
-      
-
-      //console.log(JSON.stringify(cookieObject));
-    </script>
-    
-  </head>
-
-
-  <body>
-    <header>
-      <a id="home" href="./index.html">Bedrock Grooming</a>
-    </header>
-
-    <div id="divUserCount">
-      <p id="p1">The current number of unique users to this website is: </p>
-    </div>
-
-    <nav style="text-align:center;padding: 5mm;font-size: 5mm;background-color: #4f5054;color:#e8eaeb;">
+  <div class="topnav" id="myTopnav">
+    <ul>
       <a href="https://www.bedrockgrooming.com/">Home</a>
       <a href="./about.html">About</a>
       <a href="./pricing.html">Pricing</a>
@@ -172,21 +43,19 @@
       <a href="./careers.html">Careers</a>
       <a href="./blog.html">Blog</a>
       <a href="./payment.html">Payment</a>
-    </nav>
-    <script>
-
-    </script>
-      
-    <img src="Images/HomePage.png" alt="pet rocks" style="width:100%;height: 100%;padding: 0;">
-
-
-      
-    <footer>
-      <p>&copy; 2023 bedrockgrooming. All Rights Reserved. <br> "The Best Pet Rock Care Service!"
-      </p>
-      <a href="./sitemap.html">Site Map</a>
-    </footer>
-    <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a945a9f934c0453ba9768c1c0e7c3c68"}'></script><!-- End Cloudflare Web Analytics -->
-  </body>
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+      </a>
+    </ul>
+  </div>
+    
+  <img src="Images/HomePage.png" alt="pet rocks" style="width:100%;height: 100%;padding: 0;">
+  <footer>
+    <p>&copy; 2023 bedrockgrooming. All Rights Reserved. <br> "The Best Pet Rock Care Service!"
+    </p>
+    <a href="./sitemap.html">Site Map</a>
+  </footer>
+  <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a945a9f934c0453ba9768c1c0e7c3c68"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
     
 </html>
