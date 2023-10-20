@@ -159,6 +159,11 @@ a[target="versionTxt"] {
     vertical-align: baseline;
     padding: 0;
 }
+a[target="feedbackSurvey"] {
+    color: #a4cb62;
+    vertical-align: baseline;
+    padding: 0;
+}
 a:hover{
   color:#567836;
   background-color: #e8eaeb;
